@@ -550,9 +550,9 @@ for i in lm:
         'number':k,# вбивается вручную
         'date':looool, # вбивается вручную
         'contract':ws[f"B{k}"].value +'/'+ ws[f"G{k}"].value, # вбивается вручную
-        'contract_date':'14.04.2023/'+datetime.strptime(ws[f"D{k}"].value, '%Y-%m-%d').strftime("%d.%m.%Y"), # вбивается вручную
+        'contract_date':'14.04.2023/'+str(ws[f"D{k}"].value), # вбивается вручную
         'appendix':ws[f"C{k}"].value, # вбивается вручную
-        'appendix_date':datetime.strptime(ws[f"D{k}"].value, '%Y-%m-%d').strftime("%d.%m.%Y"), # вбивается вручную
+        'appendix_date':str(ws[f"D{k}"].value), # вбивается вручную
         }
         pr = {
             'number':x,
