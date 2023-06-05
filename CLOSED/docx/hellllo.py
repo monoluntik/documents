@@ -532,7 +532,7 @@ lm = [[360, 362],] #Oazr
 lm = [[12, 21],] #Oazr
 
 # [182, 187], [230, 239], [251, 257], [345, 348],
-lm = [ [360, 362],]
+# lm = [ [360, 362],]
 wb = load_workbook(filename = 'VIPData.xlsx')
 ws = wb.get_sheet_by_name('Лист1')
 pppl = 1
