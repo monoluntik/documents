@@ -63,7 +63,7 @@ CURRENCY_CODE = {'usd':'2',
 
 class Documents:
 
-    def __init__(self, currency, document, shipper, seller, powerOfAttorney, products, consignee, payer, other_data, shablons_dir='shablons/', distance_dir='done/'):
+    def __init__(self, currency, document, shipper, seller, powerOfAttorney, products, consignee, payer, other_data, shablons_dir='./shablons/', distance_dir='./done/'):
         self.shipper_addres = translate_text(f'{shipper["street"]} {shipper["city"]} {shipper["country"]}', target_language='ru')
         self.seller_addres = translate_text(f'{seller["street"]} {seller["city"]} {seller["country"]}', target_language='ru')
         self.consignee_addres = translate_text(f'{consignee["street"]} {consignee["city"]} {consignee["country"]}', target_language='ru')
