@@ -598,7 +598,7 @@ for i in lm:
         other_data = {
             'date_consignee':klll.strftime("%d.%m.%Y"),
             'date_shipper':looool,
-            'pll_number':ws[f"S{k}"].value.replace('dd', 'от')
+            'pll_number':ws[f"S{k}"].value
         }
         productsssss = [[int(ws[f'I{k}'].value), float(ws[f'J{k}'].value), ws[f'H{k}'].value, 'PC', 'corrugated box' ,float(f"{ws[f'E{k}'].value}".replace(',', '.').replace(' ', ''))],]
         docs = Documents(currency='usd', document=Document, shipper=Shipper, seller=Payer, powerOfAttorney=pollllllllllll[f"powerOfAttorney{randint(1,5)}"], products=productsssss, consignee=ConsigneeDemsa, payer=ConsigneeOazr, other_data=other_data)
