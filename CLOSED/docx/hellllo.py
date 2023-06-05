@@ -546,6 +546,7 @@ for i in lm:
     for k in range(*i):
         # print([i for i in ws[f'O{k}'].value.split(',') if 'city' in i.lower()])
         looool = fake.date_between(start_date=start_date, end_date=end_date).strftime("%d.%m.%Y")
+        print(ws[f"B{k}"].value, ws[f"G{k}"].value)
         Document = {
         'number':k,# вбивается вручную
         'date':looool, # вбивается вручную
@@ -569,26 +570,18 @@ for i in lm:
         x+=2
         isum+=float(float(f"{ws[f'E{k}'].value}".replace(',', '.').replace(' ', ''))*0.005,)
         products.append(pr)
-        openai.api_key = "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"
         print(ws[f'O{k}'].value)
-        chat_completion = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": f"найди страну и город {ws[f'O{k}'].value}, ответ в виде Страна, Город, адрес на английском"}])
         # print the chat completion
-        if '\n' in chat_completion.choices[0].message.content:
-            chat_completion = chat_completion.choices[0].message.content.split('\n')
-        else:
-            chat_completion = chat_completion.choices[0].message.content.split(', ', 3)
-        print(chat_completion)
         print(f"найди страну и город {ws[f'O{k}'].value}, ответ в виде Страна, Город, адрес на английском")
-        print(chat_completion[2].replace('Адрес:', '').replace('Address:', ''), chat_completion[1].replace('Город:', '').replace('City:', ''), chat_completion[0].replace('Страна:', '').replace('Country:', ''))
         names = ws[f"N{k}"].value
         Seller = { #Продавец
         'name':ws[f"N{k}"].value,
         'short_name':ws[f"N{k}"].value,
         'okpo':' ', 
         'director':ws[f"K{k}"].value, 
-        'street':chat_completion[2].replace('Адрес:', '').replace('Address:', '').replace('Город:', '').replace('City:', '').replace('Страна:', '').replace('Country:', ''),
-        'city':chat_completion[1].replace('Город:', '').replace('City:', '').replace('Адрес:', '').replace('Address:', '').replace('Страна:', '').replace('Country:', ''),
-        'country':chat_completion[0].replace('Страна:', '').replace('Country:', '').replace('Адрес:', '').replace('Address:', '').replace('Город:', '').replace('City:', ''),
+        'street':ws[f"O{k}"].value,
+        'city':ws[f"Q{k}"].value,
+        'country':ws[f"P{k}"].value,
         'tin': ' ', 
         }
         Shipper = { #Продавец
@@ -596,9 +589,9 @@ for i in lm:
         'short_name':ws[f"N{k}"].value,
         'okpo':' ', 
         'director':ws[f"K{k}"].value, 
-        'street':chat_completion[2].replace('Адрес:', '').replace('Address:', '').replace('Город:', '').replace('City:', '').replace('Страна:', '').replace('Country:', ''),
-        'city':chat_completion[1].replace('Город:', '').replace('City:', '').replace('Адрес:', '').replace('Address:', '').replace('Страна:', '').replace('Country:', ''),
-        'country':chat_completion[0].replace('Страна:', '').replace('Country:', '').replace('Адрес:', '').replace('Address:', '').replace('Город:', '').replace('City:', ''),
+        'street':ws[f"O{k}"].value,
+        'city':ws[f"Q{k}"].value,
+        'country':ws[f"P{k}"].value,
         'tin': ' ', 
         }
         klll = datetime.strptime(looool, '%d.%m.%Y')+timedelta(days=18)
